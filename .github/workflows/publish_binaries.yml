@@ -1,0 +1,16 @@
+name: Publish Binaries
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish-binaries:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check if a new release is needed
+        run: |
+          TRIGGER_TAG=${{ github.event.release.tag_name }}
+          echo "release name is $TRIGGER_TAG"
