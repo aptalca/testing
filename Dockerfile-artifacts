@@ -1,8 +1,8 @@
-ARG TRIGGER_TAG
+ARG INPUT_TRIGGER_TAG
 
-FROM linuxserver/docker-compose:amd64-${TRIGGER_TAG} as compose-amd64
-FROM linuxserver/docker-compose:arm32v7-${TRIGGER_TAG} as compose-arm32
-FROM linuxserver/docker-compose:arm64v8-${TRIGGER_TAG} as compose-arm64
+FROM linuxserver/docker-compose:amd64-${INPUT_TRIGGER_TAG} as compose-amd64
+FROM linuxserver/docker-compose:arm32v7-${INPUT_TRIGGER_TAG} as compose-arm32
+FROM linuxserver/docker-compose:arm64v8-${INPUT_TRIGGER_TAG} as compose-arm64
 
 FROM lsiobase/alpine:3.12 as buildstage
 
