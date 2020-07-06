@@ -1,0 +1,16 @@
+# action name
+name: 'publish-binaries'
+
+# action description
+description: 'Adds docker-cli and docker-compose binaries to releases.'
+
+# action input values
+inputs:
+  TRIGGER_TAG:
+    description: 'The tag for the release'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile-artifacts'
+  args:
+      - ${{ inputs.TRIGGER_TAG }}
