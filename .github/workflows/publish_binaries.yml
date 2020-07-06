@@ -8,9 +8,17 @@ on:
 jobs:
   publish-binaries:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Check if a new release is needed
+      - name: Figure out trigger release tag
         run: |
           TRIGGER_TAG=${{ github.event.release.tag_name }}
-          echo "release name is $TRIGGER_TAG"
+      - name: Retrieve artifacts
+        uses: aptalca/testing@master
+        with:
+          TRIGGER_TAG: "$TRIGGER_TAG"
+      - name: Copy build-artifacts
+        uses: skx/github-action-publish-binaries@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: "./dist/*"
