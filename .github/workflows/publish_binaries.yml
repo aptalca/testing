@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Retrieve artifacts
         run: |
+          mkdir -p ./artifacts
           docker create --name amd64 linuxserver/docker-compose:amd64-${{ github.event.release.tag_name }}
           docker cp amd64:/usr/local/bin/docker-compose ./artifacts/docker-compose-amd64
           docker cp amd64:/usr/local/bin/docker ./artifacts/docker-cli-amd64
