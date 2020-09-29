@@ -204,12 +204,11 @@ Below are the instructions for updating containers:
   * or update a single container: `docker-compose up -d code-server`
 * You can also remove the old dangling images: `docker image prune`
 
-### Via Docker Run/Create
+### Via Docker Run
 * Update the image: `docker pull linuxserver/code-server`
 * Stop the running container: `docker stop code-server`
 * Delete the container: `docker rm code-server`
-* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
-* Start the new container: `docker start code-server`
+* Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
 * You can also remove the old dangling images: `docker image prune`
 
 ### Via Watchtower auto-updater (only use if you don't remember the original parameters)
