@@ -197,19 +197,19 @@ Most of our images are static, versioned, and require an image update and contai
 
 Below are the instructions for updating containers:
 
+### Via Docker Compose
+* Update all images: `docker-compose pull`
+  * or update a single image: `docker-compose pull code-server`
+* Let compose update all containers as necessary: `docker-compose up -d`
+  * or update a single container: `docker-compose up -d code-server`
+* You can also remove the old dangling images: `docker image prune`
+
 ### Via Docker Run/Create
 * Update the image: `docker pull linuxserver/code-server`
 * Stop the running container: `docker stop code-server`
 * Delete the container: `docker rm code-server`
 * Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
 * Start the new container: `docker start code-server`
-* You can also remove the old dangling images: `docker image prune`
-
-### Via Docker Compose
-* Update all images: `docker-compose pull`
-  * or update a single image: `docker-compose pull code-server`
-* Let compose update all containers as necessary: `docker-compose up -d`
-  * or update a single container: `docker-compose up -d code-server`
 * You can also remove the old dangling images: `docker image prune`
 
 ### Via Watchtower auto-updater (only use if you don't remember the original parameters)
@@ -220,10 +220,9 @@ Below are the instructions for updating containers:
   containrrr/watchtower \
   --run-once code-server
   ```
+* You can also remove the old dangling images: `docker image prune`
 
 **Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using [Docker Compose](https://docs.linuxserver.io/general/docker-compose).
-
-* You can also remove the old dangling images: `docker image prune`
 
 ### Image Update Notifications - Diun (Docker Image Update Notifier)
 * We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
