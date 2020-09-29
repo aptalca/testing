@@ -103,7 +103,7 @@ services:
 ### docker cli
 
 ```
-docker create \
+docker run -d \
   --name=code-server \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -212,7 +212,7 @@ Below are the instructions for updating containers:
   * or update a single container: `docker-compose up -d code-server`
 * You can also remove the old dangling images: `docker image prune`
 
-### Via Watchtower auto-updater (especially useful if you don't remember the original parameters)
+### Via Watchtower auto-updater (only use if you don't remember the original parameters)
 * Pull the latest image at its tag and replace it with the same env variables in one run:
   ```
   docker run --rm \
@@ -221,9 +221,12 @@ Below are the instructions for updating containers:
   --run-once code-server
   ```
 
-**Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using Docker Compose.
+**Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using [Docker Compose](https://docs.linuxserver.io/general/docker-compose).
 
 * You can also remove the old dangling images: `docker image prune`
+
+### Image Update Notifications - Diun (Docker Image Update Notifier)
+* We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
 
 ## Building locally
 
