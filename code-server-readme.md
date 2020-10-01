@@ -79,7 +79,7 @@ Here are some example snippets to help you get started creating a container.
 
 Compatible with docker-compose v2 schemas.
 
-```yml
+```yaml
 ---
 version: "2.1"
 services:
