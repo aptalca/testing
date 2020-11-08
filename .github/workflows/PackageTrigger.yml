@@ -1,4 +1,4 @@
-Name: Package Trigger
+name: Package Trigger
 
 on:
   schedule:
