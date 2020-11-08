@@ -1,0 +1,14 @@
+Name: Package Trigger
+
+on:
+  schedule:
+    - cron:  '* * * * *'
+
+jobs:
+  package-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Package Trigger
+        if: ${{ secrets.PAUSE_PACKAGE_TRIGGER == '' }}
+        run: |
+          echo "running package trigger"
