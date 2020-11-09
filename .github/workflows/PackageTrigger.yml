@@ -10,4 +10,6 @@ jobs:
     steps:
       - name: Package Trigger
         run: |
-          echo "running package trigger"
+          curl -X POST \
+            https://ci.linuxserver.io/job/Tools/job/cleanup-X86-BUILDER-2/build \
+            --user ${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}
