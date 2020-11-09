@@ -1,0 +1,13 @@
+name: Package Trigger Test
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+jobs:
+  package-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Package Trigger Test
+        run: |
+          echo "testing"
