@@ -2,7 +2,7 @@ name: Package Trigger
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '*/10 * * * *'
 
 jobs:
   package-trigger:
@@ -10,6 +10,4 @@ jobs:
     steps:
       - name: Package Trigger
         run: |
-          curl -X POST \
-            https://ci.linuxserver.io/job/Tools/job/cleanup-X86-BUILDER-2/build \
-            --user ${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}
+          echo "testing from master branch"
