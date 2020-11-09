@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Package Trigger Test
         run: |
-          echo "testing"
+          echo "testing from testing branch"
