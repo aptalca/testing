@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  package-trigger:
+  package-trigger-test:
     runs-on: ubuntu-latest
     steps:
       - name: Package Trigger Test
