@@ -1,0 +1,14 @@
+name: Package Trigger
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  package-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Package Trigger
+        run: |
+          echo "testing from testing branch"
