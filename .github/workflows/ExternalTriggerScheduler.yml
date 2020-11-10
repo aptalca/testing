@@ -32,6 +32,9 @@ jobs:
                   -H "Accept: application/vnd.github.v3+json" \
                   -d '{"ref":"refs/heads/${br}"}' \
                   https://api.github.com/repos/aptalca/testing/actions/workflows/ExternalTrigger.yml/dispatches
+              else
+                echo "workflow doesn't exist, skipping"
+              fi
             else
               echo "no match, skipping"
             fi
