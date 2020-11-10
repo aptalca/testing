@@ -1,4 +1,4 @@
-name: External Trigger
+name: External Trigger Main
 
 on:
   #schedule:
