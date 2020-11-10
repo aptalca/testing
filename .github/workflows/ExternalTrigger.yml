@@ -1,0 +1,14 @@
+name: External Trigger
+
+on:
+  #schedule:
+  #  - cron:  '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  external-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: External Trigger
+        run: |
+          echo "external trigger running"
