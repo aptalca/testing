@@ -16,11 +16,13 @@ jobs:
       - name: Package Trigger
         run: |
           git for-each-ref --format='%(refname:short)' refs/remotes
+          curl -fsSL "https://raw.githubusercontent.com/linuxserver/docker-yq/master/run-yq.sh" -o yq.sh
+          chmod +x yq.sh
           for br in $(git for-each-ref --format='%(refname:short)' refs/remotes)
           do
             br=$(echo "$br" | sed 's|origin/||g')
             echo "evaluating branch ${br}"
-            ls_branch=$(curl -sX GET https://raw.githubusercontent.com/linuxserver/docker-sonarr/${br}/jenkins-vars.yml | yq r - ls_branch)
+            ls_branch=$(curl -sX GET https://raw.githubusercontent.com/linuxserver/docker-sonarr/${br}/jenkins-vars.yml | ./yq.sh -r .ls_branch)
             if [ "$br" == "$ls_branch" ]; then
               echo "it's a match, triggering"
             else
