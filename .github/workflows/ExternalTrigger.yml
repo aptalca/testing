@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  external-trigger:
+  external-trigger-test:
     runs-on: ubuntu-latest
     steps:
       - name: External Trigger
