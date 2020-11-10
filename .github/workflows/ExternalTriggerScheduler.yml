@@ -28,7 +28,7 @@ jobs:
               if curl -sfX GET https://raw.githubusercontent.com/aptalca/testing/${br}/.github/workflows/ExternalTrigger.yml > /dev/null 2>&1; then
                 echo "workflow exists, triggering"
                 curl -iX POST \
-                  -H "Authorization: token ${{ github.token }}" \
+                  -H "Authorization: token ${{ secrets.CR_PAT }}" \
                   -H "Accept: application/vnd.github.v3+json" \
                   -d "{\"ref\":\"refs/heads/${br}\"}" \
                   https://api.github.com/repos/aptalca/testing/actions/workflows/ExternalTrigger.yml/dispatches
