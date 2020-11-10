@@ -25,9 +25,9 @@ jobs:
               | docker run --rm -i --entrypoint yq ghcr.io/linuxserver/yq -r .ls_branch)
             if [ "$br" == "$ls_branch" ]; then
               echo "it's a match, checking workflow"
-              if curl -sfX GET https://raw.githubusercontent.com/aptalca/testing/${br}/.github/workflows/ExternalTrigger.yml; then
+              if curl -sfX GET https://raw.githubusercontent.com/aptalca/testing/${br}/.github/workflows/ExternalTrigger.yml > /dev/null 2>&1; then
                 echo "workflow exists, triggering"
-                curl -X POST \
+                curl -iX POST \
                   -H "Authorization: token ${{ github.token }}" \
                   -H "Accept: application/vnd.github.v3+json" \
                   -d "{\"ref\":\"refs/heads/${br}\"}" \
