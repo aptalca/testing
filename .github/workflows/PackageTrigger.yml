@@ -10,14 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.3
-        with:
-          fetch-depth: '0'
         
       - name: Package Trigger
         run: |
-          git for-each-ref --format='%(refname:short)' refs/heads
-          for br in $(git for-each-ref --format='%(refname:short)' refs/heads)
+          git for-each-ref --format='%(refname:short)' refs/remotes
+          for br in $(git for-each-ref --format='%(refname:short)' refs/remotes)
           do
+            br=$(echo "$br" | sed 's|origin/||g')
             echo "evaluating branch ${br}"
             if [ "$br" == "master" ]; then
               echo "it's a match, triggering"
