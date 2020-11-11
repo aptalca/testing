@@ -13,7 +13,7 @@ jobs:
         
       - name: Testing
         run: |
-          if [ -n "${{ secrets.PAUSE_TRIGGER }}" ]; then
+          if [ -n ${{ secrets.PAUSE_TRIGGER }} ]; then
             echo "var is set"
           else
            echo "var is not set"
