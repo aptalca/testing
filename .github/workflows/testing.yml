@@ -13,10 +13,8 @@ jobs:
         
       - name: Testing
         run: |
-          ls_branch="test"
-          pause_trigger_name="pause_package_trigger_testing_$ls_branch"
           echo "pause_trigger_name=TESTING" >> GITHUB.ENV
-          pause_trigger=${{ secrets[env.pause_trigger_name] }}
+          pause_trigger=${{ secrets.TESTING }}
           if [ "$pause_trigger" == "true" ]; then
             echo "successful"
           else
