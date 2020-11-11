@@ -2,3 +2,22 @@ name: Testing
 
 on:
   workflow_dispatch:
+
+jobs:
+  package-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.3
+        with:
+          fetch-depth: '0'
+        
+      - name: Testing
+        run: |
+          ls_branch="test"
+          pause_trigger_name="pause_package_trigger_testing_$ls_branch"
+          pause_trigger=${{ secrets[env.pause_trigger_name] }}
+          if [ "$pause_trigger" == "true" ]; then
+            echo "successful"
+          else
+            echo "not successful"
+          fi
