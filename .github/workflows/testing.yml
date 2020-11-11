@@ -12,9 +12,11 @@ jobs:
           fetch-depth: '0'
         
       - name: Testing
+        env:
+          PAUSE_TRIGGER_NAME: TESTING
         run: |
           #echo "PAUSE_TRIGGER_NAME=TESTING" >> $GITHUB_ENV
-          export PAUSE_TRIGGER_NAME="TESTING"
+          #export PAUSE_TRIGGER_NAME="TESTING"
           pause_trigger=${{ secrets[env.PAUSE_TRIGGER_NAME] }}
           if [ "$pause_trigger" == "true" ]; then
             echo "successful"
