@@ -6,15 +6,13 @@ on:
 jobs:
   testing:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.3
-        with:
-          fetch-depth: '0'
-        
+    steps:        
       - name: Testing
         run: |
-          if [ -n ${{ secrets.PAUSE_TRIGGER }} ]; then
-            echo "var is set"
-          else
-           echo "var is not set"
-          fi
+          echo "event_path is ${{ github.event_path }}
+          echo "ref is ${{ github.ref }}
+          echo "repository is ${{ github.repository }}
+          echo "run_id is ${{ github.run_id }}
+          echo "run_number is ${{ github.run_number }}
+          echo "workflow is ${{ github.workflow }}
+          
